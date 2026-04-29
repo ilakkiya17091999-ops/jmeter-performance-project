@@ -24,7 +24,7 @@ jobs:
         run: apache-jmeter-5.6.3/bin/jmeter -n -t jmeter/Docker_Sockshop.jmx -l results.jtl -e -o report -JThread=10 -JRampup=5 -JDuration=3600 -JSLA=36000
       - name: Upload Report
         uses: actions/upload-artifact@v4
-        With:
+        with:
           name: jmeter report
           path: report
       
