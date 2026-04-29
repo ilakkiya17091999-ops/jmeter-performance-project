@@ -99,7 +99,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
         <collectionProp name="HeaderManager.headers">
           <elementProp name="Accept" elementType="Header">
             <stringProp name="Header.name">Accept</stringProp>
@@ -123,7 +123,7 @@
           </elementProp>
           <elementProp name="Host" elementType="Header">
             <stringProp name="Header.name">Host</stringProp>
-            <stringProp name="Header.value">localhost</stringProp>
+            <stringProp name="Header.value">edge-router</stringProp>
           </elementProp>
           <elementProp name="If-None-Match" elementType="Header">
             <stringProp name="Header.name">If-None-Match</stringProp>
@@ -131,7 +131,7 @@
           </elementProp>
           <elementProp name="Referer" elementType="Header">
             <stringProp name="Header.name">Referer</stringProp>
-            <stringProp name="Header.value">http://localhost/index.html</stringProp>
+            <stringProp name="Header.value">http://edge-router/index.html</stringProp>
           </elementProp>
           <elementProp name="Sec-Fetch-Dest" elementType="Header">
             <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
@@ -172,11 +172,11 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
           <elementProp name="V_Host" elementType="Argument">
             <stringProp name="Argument.name">V_Host</stringProp>
-            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.value">edge-route</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="V_Scheme" elementType="Argument">
@@ -186,22 +186,22 @@
           </elementProp>
           <elementProp name="SLA" elementType="Argument">
             <stringProp name="Argument.name">SLA</stringProp>
-            <stringProp name="Argument.value">${__P(sla,6000)}</stringProp>
+            <stringProp name="Argument.value">${__P(SLA,6000)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Thread" elementType="Argument">
             <stringProp name="Argument.name">Thread</stringProp>
-            <stringProp name="Argument.value">${__P(users,1)}</stringProp>
+            <stringProp name="Argument.value">${__P(Thread,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Rampup" elementType="Argument">
             <stringProp name="Argument.name">Rampup</stringProp>
-            <stringProp name="Argument.value">${__P(rampup,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(Rampup,5)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Duration" elementType="Argument">
             <stringProp name="Argument.name">Duration</stringProp>
-            <stringProp name="Argument.value">${__P(duration,600)}</stringProp>
+            <stringProp name="Argument.value">${__P(Duration,600)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="V_Port" elementType="Argument">
@@ -602,10 +602,10 @@ if(prdids.size()&gt;0)
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+            <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager">
               <collectionProp name="AuthManager.auth_list">
                 <elementProp name="" elementType="Authorization">
-                  <stringProp name="Authorization.url">http://localhost</stringProp>
+                  <stringProp name="Authorization.url">http://edge-router</stringProp>
                   <stringProp name="Authorization.username">${P_Username}${P_Lastname}</stringProp>
                   <stringProp name="Authorization.password">${P_password}</stringProp>
                   <stringProp name="Authorization.domain"></stringProp>
@@ -871,10 +871,10 @@ if(prdids.size()&gt;0)
               </elementProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+              <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager">
                 <collectionProp name="AuthManager.auth_list">
                   <elementProp name="" elementType="Authorization">
-                    <stringProp name="Authorization.url">http://localhost</stringProp>
+                    <stringProp name="Authorization.url">http://edge-router</stringProp>
                     <stringProp name="Authorization.username">${P_Username}${P_Lastname}</stringProp>
                     <stringProp name="Authorization.password">${P_password}</stringProp>
                     <stringProp name="Authorization.domain"></stringProp>
@@ -1142,7 +1142,7 @@ else
           <stringProp name="ActionProcessor.duration">${pacingTime}</stringProp>
         </TestAction>
         <hashTree/>
-        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="influxdbMetricsSender" elementType="Argument">
@@ -1152,7 +1152,7 @@ else
               </elementProp>
               <elementProp name="influxdbUrl" elementType="Argument">
                 <stringProp name="Argument.name">influxdbUrl</stringProp>
-                <stringProp name="Argument.value">http://localhost:8086/write?db=jmeter</stringProp>
+                <stringProp name="Argument.value">http://influxdb:8086/write?db=jmeter</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="application" elementType="Argument">
