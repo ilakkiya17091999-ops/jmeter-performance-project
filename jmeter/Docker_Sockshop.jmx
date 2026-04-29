@@ -214,7 +214,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${Thread}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${Rampup}</stringProp>
         <stringProp name="ThreadGroup.duration">${Duration}</stringProp>
@@ -1330,7 +1330,7 @@ else
         <stringProp name="percentile">90</stringProp>
       </com.personal.jmeter.listener.ListenerCollector>
       <hashTree/>
-      <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="true">
+      <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="false">
         <collectionProp name="prometheus.collector_definitions">
           <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
             <stringProp name="collector.help">default help string</stringProp>
