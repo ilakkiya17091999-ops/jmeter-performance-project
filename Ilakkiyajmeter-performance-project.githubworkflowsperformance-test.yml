@@ -1,0 +1,30 @@
+name: Performance Test Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  perf-test:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Start Containers
+        run: docker compose -f docker/docker-compose.yml up -d
+      - name: Wait
+        run: sleep 60
+      - name: Install JMeter
+        run: |
+          wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xvf apache-jmeter-5.6.3.tgz
+      - name: Run Load Test
+        run: apache-jmeter-5.6.3/bin/jmeter -n -t jmeter/Docker_Sockshop.jmx -l results.jtl -e -o report -JThread=10 -JRampup=5 -JDuration=3600 -JSLA=36000
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        With:
+          name: jmeter report
+          path: report
+      
