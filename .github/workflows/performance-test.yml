@@ -17,7 +17,9 @@ jobs:
       - name: Wait
         run: sleep 60
       - name: Verify edge-router reachable
-        run: curl http://edge-router:80
+        run: | 
+          curl http://localhost:80
+          curl http://localhost:8086/ping
       - name: Install JMeter
         run: |
           wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
