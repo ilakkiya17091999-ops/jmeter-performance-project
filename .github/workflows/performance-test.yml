@@ -11,7 +11,7 @@ jobs:
   
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Start Containers
         run: docker compose -f docker/docker-compose.yml up -d
       - name: Wait
@@ -35,10 +35,21 @@ jobs:
           wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xvf apache-jmeter-5.6.3.tgz
       - name: Run Load Test
-        run: apache-jmeter-5.6.3/bin/jmeter -n -t jmeter/Docker_Sockshop.jmx -l results.jtl -e -o report -JThread=10 -JRampup=5 -JDuration=3600 -JSLA=36000
+        run: |
+          export JVM_ARGS="-Xms1g -Xmx2g"
+          apache-jmeter-5.6.3/bin/jmeter \
+            -n -t jmeter/Docker_Sockshop.jmx \
+            -l results.jtl \
+            -e -o report \
+            -JThread=10 \
+            -JRampup=5 \
+            -JDuration=1800 \
+            -JSLA=36000
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
-          name: jmeter report
-          path: report
+          name: jmeter-results
+          path: | 
+          results.jtl
+          report/
       
